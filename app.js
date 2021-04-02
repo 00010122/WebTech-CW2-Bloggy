@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 
+app.set('view engine', 'pug')
+
+// Localhost:8000
 app.get('/', (req, res) => {
-    res.send('Hello')
+    res.render('home')
 })
 
 app.listen(8000, err => {
