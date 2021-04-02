@@ -3,6 +3,8 @@ const app = express()
 
 app.set('view engine', 'pug')
 
+app.use('/static', express.static('public'))
+
 // Localhost:8000
 app.get('/', (req, res) => {
     res.render('home')

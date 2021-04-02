@@ -1,0 +1,88 @@
+html {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    /*background-color: #388D80;*/
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #ccc;
+}
+.navbar h1 a{
+    font-size: 35px;
+    font-weight: 500;
+    color: #FF8000;
+    text-decoration: none;
+    padding: 5px 10px;
+    letter-spacing: 3px;
+    font-family: 'Fredoka One', cursive;
+    border-radius: 30px;
+}
+
+.nav a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 30px;
+}
+.nav a:hover, .navbar h1 a:hover{
+    color: #FF9224
+}
+
+/* Home Page */
+
+.container {
+    max-width: 1000px;
+    margin: 80px auto 0 auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-msg-1 {
+    font-size: 40px;
+    color: #000;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+.intro-msg-2 {
+    font-size: 24px;
+    color: #000;
+    font-weight: 400;
+    padding-top: 20px;
+}
+.button {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px 25px 10px 25px;
+    margin-top: 50px;
+    border-radius: 15px;
+    background-color: #FF8000;
+}
+
+.button:hover{
+    background-color: #FF9224;
+}
+
+.text p {
+    margin-top: 130px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+}
