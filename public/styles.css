@@ -112,14 +112,25 @@ html {
     padding: 5px;
     font-size: inherit;
     font-family: inherit;
-    margin-top: 5px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    border: 0.5px solid #FF8000;
+    border-radius: 15px;
+    outline: none;
 }
 ::placeholder {
     font-size: 16px;
 }
-
+.label {
+    color: #000;
+    background-color: rgb(255, 128, 0, 0.2);
+    padding: 3px 20px 3px 20px;
+    border-radius: 20px;
+}
 .label-blog {
+    color: #000;
+    background-color: rgb(255, 128, 0, 0.2);
+    padding: 3px 20px 3px 20px;
+    border-radius: 20px;
     display: inline-block;
     margin-top: 30px;
 }
@@ -132,10 +143,13 @@ html {
     font-family: inherit;
     margin-bottom: 20px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 0.5px solid #FF8000;
+    border-radius: 15px;
+    outline: none;
 }
 
 .btn {
+    cursor: pointer;
     display: inline-block;
     font-size: 20px;
     color: #fff;
@@ -143,6 +157,7 @@ html {
     border-radius: 15px;
     background-color: #FF8000;
     border: none;
+    outline: none;
 }
 .btn:hover {
     background-color: #FF9224;
