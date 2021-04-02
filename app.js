@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+app.get('/create', (req, res) => {
+    res.render('create')
+})
+
 app.listen(8000, err => {
     if (err) console.log(err)
     console.log('Server is running on port 8000...')
