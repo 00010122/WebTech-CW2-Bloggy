@@ -20,6 +20,10 @@ app.get('/blogs', (req, res) => {
     res.render('blogs', { blogs: blogs })
 })
 
+app.get('/blogs/detail', (req, res) => {
+    res.render('detail')
+})
+
 app.listen(8000, err => {
     if (err) console.log(err)
     console.log('Server is running on port 8000...')
