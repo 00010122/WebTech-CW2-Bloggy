@@ -14,6 +14,12 @@ app.get('/create', (req, res) => {
     res.render('create')
 })
 
+const blogs = ['Some title', 'Some title 2']
+
+app.get('/blogs', (req, res) => {
+    res.render('blogs', { blogs: blogs })
+})
+
 app.listen(8000, err => {
     if (err) console.log(err)
     console.log('Server is running on port 8000...')

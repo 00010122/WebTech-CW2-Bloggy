@@ -69,7 +69,7 @@ html {
     display: inline-block;
     font-size: 20px;
     color: #fff;
-    padding: 10px 25px 10px 25px;
+    padding: 10px 25px;
     margin-top: 50px;
     border-radius: 15px;
     background-color: #FF8000;
@@ -123,13 +123,13 @@ html {
 .label {
     color: #000;
     background-color: rgb(255, 128, 0, 0.2);
-    padding: 3px 20px 3px 20px;
+    padding: 3px 20px;
     border-radius: 20px;
 }
 .label-blog {
     color: #000;
     background-color: rgb(255, 128, 0, 0.2);
-    padding: 3px 20px 3px 20px;
+    padding: 3px 20px;
     border-radius: 20px;
     display: inline-block;
     margin-top: 30px;
@@ -153,12 +153,52 @@ html {
     display: inline-block;
     font-size: 20px;
     color: #fff;
-    padding: 10px 25px 10px 25px;
+    padding: 10px 25px;
     border-radius: 15px;
     background-color: #FF8000;
     border: none;
     outline: none;
 }
 .btn:hover {
+    background-color: #FF9224;
+}
+
+/* blogs list page */
+
+.blog-container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.blog-container h1 {
+    margin: 40px 0;
+}
+
+.blog-wrapper {
+    max-width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #FF8000;
+    border-radius: 50px;
+    margin: 20px 0;
+}
+
+.blog {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+.delete {
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF8000;
+}
+.delete:hover {
     background-color: #FF9224;
 }
