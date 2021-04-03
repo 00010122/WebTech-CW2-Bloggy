@@ -4,6 +4,12 @@ block content
   .create-container 
      h2 Write your blog
 
+     if error 
+       p.error Filling all forms are required. Try again!
+
+     if success
+       p.success Your blog is successfully saved. 
+
      form(action="/create" method="POST")
         .input-container-main
             .input-container 
@@ -16,6 +22,6 @@ block content
            
         
         label.label-blog Blog Text 
-        textarea.textarea(placeholder="   blog text here..." type="text" name="blog-text")
+        textarea.textarea(placeholder="   blog text here..." type="text" name="blogtext")
 
         button.btn Save blog

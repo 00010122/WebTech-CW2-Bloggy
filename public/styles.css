@@ -95,10 +95,20 @@ html {
 }
 
 .create-container h2 {
-    margin: 20px auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-size: 24px;
 }
 
+.error, .success {
+    font-size: 20px;
+    color: #FF8000;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.success {
+    color: green;
+}
 .input-container-main {
     width: 100%;
     display: flex;
@@ -189,6 +199,9 @@ html {
     text-decoration: none;
     color: #000;
     font-size: 20px;
+}
+.blog:hover {
+    color: #FF8000;
 }
 
 .delete {
