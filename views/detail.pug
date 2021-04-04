@@ -2,8 +2,9 @@ extends layout.pug
 
 block content 
     .detail-container 
-        h2.title Blog title will be here
+        h2.title #{ blog.title }
         .line
-        h3.author Name <span> Lastname 
-        h3.date Date and Time here
-        p.description Blog text will be here
+        h3.author #{ blog.author }
+        h3.date 
+        .text-container
+            p.description #{ blog.blogtext }

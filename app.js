@@ -2,12 +2,13 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 
+
 app.set('view engine', 'pug')
 
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended: false}))
 
-// Localhost:8000
+
 app.get('/', (req, res) => {
     res.render('home')
 })
@@ -16,44 +17,85 @@ app.get('/create', (req, res) => {
     res.render('create')
 })
 
+// create new blog
 app.post('/create', (req, res) => {
     const author = req.body.author
     const title = req.body.title
     const blogtext = req.body.blogtext
 
-    if (author.trim() === '' && title.trim() === '' && blogtext.trim() === '') {
+    if (author.trim() === '' || title.trim() === '' || blogtext.trim() === '') {
         res.render('create', { error: true })
     } else {
         fs.readFile('./data/blogs.json', (err, data) => {
             if (err) throw err
 
-            const blogs = JSON.parse(data)
+            const newBlogs = JSON.parse(data)
 
-            blogs.push({
+            newBlogs.push({
                 id: id(),
                 author: author,
                 title: title,
                 blogtext: blogtext
             })
 
-            fs.writeFile('./data/blogs.json', JSON.stringify(blogs), err => {
-                if (err) throw err
+        fs.writeFile('./data/blogs.json', JSON.stringify(newBlogs), err => {
+            if (err) throw err
 
-                res.render('create', {success: true})
+            res.render('create', {success: true})
             })
         })
     }
 })
 
-const blogs = ['Some title', 'Some title 2']
-
+// show all blogs
 app.get('/blogs', (req, res) => {
-    res.render('blogs', { blogs: blogs })
+
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+
+        const blogs = JSON.parse(data)
+
+        res.render('blogs', {blogs: blogs})
+    })
 })
 
-app.get('/blogs/detail', (req, res) => {
-    res.render('detail')
+// show blog by id
+app.get('/:id', (req, res) => {
+    const id = req.params.id
+
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+
+        const blogs = JSON.parse(data)
+
+        const blog = blogs.filter(blog => blog.id == id)[0]
+
+        res.render('detail', {blog: blog})
+    })
 })
+
+// delete blog by id
+app.get('/:id/delete', (req, res) => {
+    const id = req.params.id
+
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+
+        const blogs = JSON.parse(data)
+
+        const filteredBlogs = blogs.filter(blog => blog.id != id)
+
+        fs.writeFile('./data/blogs.json', JSON.stringify(filteredBlogs), (err) => {
+            if (err) throw err
+
+            res.render('blogs', {blogs: filteredBlogs, deleted: true})
+        })
+    })
+})
+
+
+
+
 
 app.listen(8000, err => {
     if (err) console.log(err)
