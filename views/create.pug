@@ -2,26 +2,33 @@ extends layout.pug
 
 block content
   .create-container 
-     h2 Write your blog
-
+     .top-part
+       h2 Write your blog
+       .line-create
      if error 
        p.error Filling all forms are required. Try again!
 
      if success
        p.success Your blog is successfully saved. 
 
-     form(action="/create" method="POST")
+     form(action="/create" enctype="multipart/form-data" method="POST")
         .input-container-main
-            .input-container 
-               label.label Author
-               input.input(type="text" name="author" placeholder="   full name here...")
+           .left-container
+             .input-container 
+                label.label Author
+                input.input(type="text" name="author" placeholder="   full name here...")
            
-            .input-container
-               label.label Title
-               input.input(type="text" name="title" placeholder="   blog title here...")
-           
-        
-        label.label-blog Blog Text 
-        textarea.textarea(placeholder="   blog text here..." type="text" name="blogtext")
+             .input-container
+                label.label Title
+                input.input(type="text" name="title" placeholder="   blog title here...")
 
-        button.btn Save blog
+             .input-container
+                label.label Upload an image
+                input.custom(type="file" name="image" required)
+           
+           .right-container
+                label.label Blog Text 
+                textarea.textarea(placeholder="   blog text here..." type="text" name="blogtext")
+
+        .button-container
+            button.btn Save blog

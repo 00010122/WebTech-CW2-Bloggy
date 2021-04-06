@@ -1,13 +1,25 @@
 extends layout.pug
 
 block content
-    .blog-container
-        h1 All Blogs
+    .blog-container-main
+        .top-part
+            h2 All Blogs
+            .line-blog
 
         if deleted
             .deleted Blog is deleted 
 
         each blog in blogs 
-            .blog-wrapper
-                a.blog(href=`/${ blog.id }`) #{ blog.title }   
-                a.delete(href=`/${ blog.id }/delete`) delete
+             .blog-container
+                .blog-img-container
+                    img(src=`/static/images/${ blog.image }`)
+                
+                .blog-detail-container
+                    .blog-labels-container
+                        h3.title-list #{ blog.title }
+                        p.author-list #{ blog.author }
+                        p.date-list  #{ blog.date }
+                    .buttons-container
+                        a.read(href=`/blogs/${ blog.id }`) Read
+                        a.delete(href=`/blogs/${ blog.id }/delete`) Delete
+                        

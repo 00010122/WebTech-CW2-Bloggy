@@ -1,10 +1,13 @@
 extends layout.pug 
 
-block content 
-    .detail-container 
-        h2.title #{ blog.title }
-        .line
-        h3.author #{ blog.author }
-        h3.date 
+block content
+    .detail-container
+        .top-container 
+            .detail-container-blog
+                h2.title #{ blog.title }
+                .line
+                .author by #{ blog.author }
+                h3.date  #{ blog.date }
+            img(src=`/static/images/${ blog.image }`)
         .text-container
             p.description #{ blog.blogtext }

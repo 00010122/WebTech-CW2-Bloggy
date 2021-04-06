@@ -1,12 +1,23 @@
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const multer = require('multer')
+const path = require('path')
 
+// storing files using multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, path.join(__dirname, 'public/images'));
+    },
+    filename: (req, file, cb) =>{
+        cb(null, id() + '.jpg');
+    }
+  });
 
 app.set('view engine', 'pug')
-
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended: false}))
+app.use(multer({ storage:storage }).single("image"));
 
 
 app.get('/', (req, res) => {
@@ -22,6 +33,7 @@ app.post('/create', (req, res) => {
     const author = req.body.author
     const title = req.body.title
     const blogtext = req.body.blogtext
+    const image = req.file.filename
 
     if (author.trim() === '' || title.trim() === '' || blogtext.trim() === '') {
         res.render('create', { error: true })
@@ -31,11 +43,16 @@ app.post('/create', (req, res) => {
 
             const newBlogs = JSON.parse(data)
 
+            const date = new Date().toString()
+
             newBlogs.push({
                 id: id(),
                 author: author,
                 title: title,
-                blogtext: blogtext
+                blogtext: blogtext,
+                date: date.substring(0, 21),
+                image:image
+
             })
 
         fs.writeFile('./data/blogs.json', JSON.stringify(newBlogs), err => {
@@ -46,6 +63,7 @@ app.post('/create', (req, res) => {
         })
     }
 })
+
 
 // show all blogs
 app.get('/blogs', (req, res) => {
@@ -59,8 +77,9 @@ app.get('/blogs', (req, res) => {
     })
 })
 
+
 // show blog by id
-app.get('/:id', (req, res) => {
+app.get('/blogs/:id', (req, res) => {
     const id = req.params.id
 
     fs.readFile('./data/blogs.json', (err, data) => {
@@ -74,8 +93,9 @@ app.get('/:id', (req, res) => {
     })
 })
 
+
 // delete blog by id
-app.get('/:id/delete', (req, res) => {
+app.get('/blogs/:id/delete', (req, res) => {
     const id = req.params.id
 
     fs.readFile('./data/blogs.json', (err, data) => {
@@ -94,14 +114,28 @@ app.get('/:id/delete', (req, res) => {
 })
 
 
+// REST API 
+app.get('/api/v1/blogs', (req, res) => {
+
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+
+        const blogs = JSON.parse(data)
+
+        res.json(blogs)
+    })
+})
 
 
 
+// localhost:8000
 app.listen(8000, err => {
     if (err) console.log(err)
     console.log('Server is running on port 8000...')
 })
 
+
+// id generator
 function id() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
