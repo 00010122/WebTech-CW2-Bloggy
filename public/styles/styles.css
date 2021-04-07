@@ -331,6 +331,12 @@ html {
 .delete:hover, .read:hover {
     background-color: #FF9224;
 }
+.icon {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 50px;
+}
 @media screen and (max-width: 900px) {
     .blog-container {
         max-width: 90%;

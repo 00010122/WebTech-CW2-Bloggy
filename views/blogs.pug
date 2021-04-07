@@ -8,18 +8,21 @@ block content
 
         if deleted
             .deleted Blog is deleted 
-
-        each blog in blogs 
-             .blog-container
-                .blog-img-container
-                    img(src=`/static/images/${ blog.image }`)
-                
-                .blog-detail-container
-                    .blog-labels-container
-                        h3.title-list #{ blog.title }
-                        p.author-list #{ blog.author }
-                        p.date-list  #{ blog.date }
-                    .buttons-container
-                        a.read(href=`/blogs/${ blog.id }`) Read
-                        a.delete(href=`/blogs/${ blog.id }/delete`) Delete
+        if blogs.length
+            each blog in blogs 
+                .blog-container
+                    .blog-img-container
+                        img(src=`/static/images/${ blog.image }`)
+                    
+                    .blog-detail-container
+                        .blog-labels-container
+                            h3.title-list #{ blog.title }
+                            p.author-list #{ blog.author }
+                            p.date-list  #{ blog.date }
+                        .buttons-container
+                            a.read(href=`/blogs/${ blog.id }`) Read
+                            a.delete(href=`/blogs/${ blog.id }/delete`) Delete
+        else 
+            h2 No blogs yet 
+            .icon 😢
                         
