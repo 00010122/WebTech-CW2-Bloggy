@@ -1,4 +1,6 @@
-# Bloggy.com ## This is web based blog writing application
+# Bloggy.com 
+
+## This is web based blog writing application
 
 ### Users can use this web application to create, read and delete blogs.
 
@@ -7,7 +9,7 @@ To run the web app locally, users should follow the instructions below:
 1. Clone remote the repository
 
 ```bash
-git clone
+git clone https://github.com/00010122/WebTech-CW2-Bloggy.git
 ```
 
 2. Selecting the exat directory and installing dependencies
@@ -30,7 +32,7 @@ node app
 
 ### Remote repository on GitHub
 
-[Click here, to open remote repository](https://github.com/00010122/WebTech-CW2-Bloggy)
+[Click here, to open remote repository](https://github.com/00010122/WebTech-CW2-Bloggy.git333)
 
 ### Application is deployed online on Glitch platform
 

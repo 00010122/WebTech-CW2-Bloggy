@@ -5,20 +5,10 @@ const multer = require('multer')
 const path = require('path')
 
 
-// storing files using multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb) =>{
-        cb(null, path.join(__dirname, 'public/images'));
-    },
-    filename: (req, file, cb) =>{
-        cb(null, id() + '.jpg');
-    }
-  });
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended: false}))
-app.use(multer({ storage:storage }).single("image"));
 
 
 app.get('/', (req, res) => {
@@ -28,6 +18,19 @@ app.get('/', (req, res) => {
 app.get('/create', (req, res) => {
     res.render('create')
 })
+
+// storing files using multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, path.join(__dirname, 'public/images'))
+    },
+    filename: (req, file, cb) =>{
+        cb(null, id() + '.jpg')
+    }
+  })
+
+app.use(multer({ storage: storage }).single("image"))
+
 
 // create new blog
 app.post('/create', (req, res) => {
@@ -52,7 +55,7 @@ app.post('/create', (req, res) => {
                 title: title,
                 blogtext: blogtext,
                 date: date.substring(0, 21),
-                image:image
+                image: image
 
             })
 
@@ -126,7 +129,6 @@ app.get('/api/v1/blogs', (req, res) => {
         res.json(blogs)
     })
 })
-
 
 
 // localhost:8000
