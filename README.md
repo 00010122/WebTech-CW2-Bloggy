@@ -36,5 +36,5 @@ node app
 
 ### Application is deployed online on Glitch platform
 
-[Click here, to open web app online]()
+[Click here, to open web app online](https://thebloggy.glitch.me/)
 
